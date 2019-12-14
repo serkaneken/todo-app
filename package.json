@@ -1,5 +1,5 @@
 {
-  "name": "merntodoapp",
+  "name": "todoapp",
   "version": "1.0.0",
   "description": "A simple todo app built with React, Redux & MongoDB for Assignment Challange",
   "main": "index.js",
