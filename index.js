@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 require("./models/Todo");
+require('dotenv').config('./.env')
+
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
