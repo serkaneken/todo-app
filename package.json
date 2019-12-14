@@ -4,7 +4,9 @@
   "description": "A simple todo app built with React, Redux & MongoDB for Assignment Challange",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run start\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
