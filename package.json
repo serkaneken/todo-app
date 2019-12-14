@@ -4,7 +4,6 @@
   "description": "A simple todo app built with React, Redux & MongoDB for Assignment Challange",
   "main": "index.js",
   "scripts": {
-
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node index.js",
     "client": "npm run start --prefix client",
