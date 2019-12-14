@@ -3,15 +3,15 @@
 > A simple todo app built with React, Redux & MongoDB for Assignment Challange
 
 
-I've hosted it by Netlify: [todoApp](https://serkaneken-todoapp.herokuapp.com/).
+I've hosted it by Heroku: [todoApp](https://serkaneken-todoapp.herokuapp.com/). 🐒
 
 ## Development
 
-After setting your MongoDB Atlas cluster(https://docs.atlas.mongodb.com/getting-started/), type following in your `/config/keys.js`:
+After setting your MLab cluster(https://elements.heroku.com/addons/mongolab/), type following in your `/config/keys.js`:
 
 ```js
 module.exports = {
-  mongoURI: 'mongodb+srv://{username}:{password}@{database_name}.mongodb.net/test?retryWrites=true'
+  mongoURI: 'mongodb://<dbuser>:<dbpassword>@ds343217.mlab.com:43217/heroku_k5bdv510'
 };
 ```
 
