@@ -1,0 +1,22 @@
+{
+  "name": "merntodoapp",
+  "version": "1.0.0",
+  "description": "A simple todo app built with React, Redux & MongoDB for Assignment Challange",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "node server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Serkan Eken",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.2",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^0.20.0",
+    "mongoose": "^5.7.7"
+  }
+}
