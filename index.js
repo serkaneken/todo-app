@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 require("./models/Todo");
+require('dotenv').config('./.env')
+
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +17,7 @@ mongoose
 
 require("./routes")(app);
 
-const port = 5000;
-app.listen(port, () => {
-  console.log("Server is running on " + port);
+
+app.listen(process.env.PORT || 5000, () => {
+  console.log("Server is running on 5***");
 });
