@@ -1,23 +1,36 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-require("./models/Todo");
-require('dotenv').config('./.env')
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const keys = require('./config/keys');
+require('./models/Todo');
 
+mongoose.connect(keys.mongoURI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
+// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// by default, you need to set it to false.
+mongoose.set('useFindAndModify', false);
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require("./config/keys").mongoURI;
-mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
-  .then(console.log("MongoDB Connected..."))
-  .catch(err => console.log(err));
+require('./routes')(app);
 
-require("./routes")(app);
+if (process.env.NODE_ENV === 'production') {
+  // Express will serve up production assets
+  // like our main.js file, or main.css file!
+  app.use(express.static('client/build'));
 
+  // Express will serve up the index.html file
+  // if it doesn't recognize the route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
-app.listen(process.env.PORT || 5000, () => {
-  console.log("Server is running on 5***");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
