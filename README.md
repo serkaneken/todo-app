@@ -3,7 +3,7 @@
 > A simple todo app built with React, Redux & MongoDB for Assignment Challange
 
 
-I've hosted it by Netlify: [todoApp](https://serkaneken-todoapp.herokuapp.com/).
+I've hosted it by Netlify: [todoApp](https://serkaneken-todoapp.netlify.com/).
 
 ## Development
 
