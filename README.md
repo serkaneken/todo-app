@@ -24,43 +24,46 @@ npm run dev                     # run the development environment
 
 
 
-## Feedback from the 2019 Assignment Review by @mcenkbatman
+## Feedback from the 2019 Assignment Review by @mcenkbatman. Thanks to this review, I learned about some shortcomings.
 
-### General Notes
+I've completed the review once more. The symbols -: negative, +: positive, and o: neutral are used to indicate the nature of the feedback.
 
-- **Deployment**: Positive feedback on successful app deployment.
-- **Commit Messages**: Negative remark for non-descriptive commit messages, suggesting the need for clarity.
-- **Empty Task Creation**: Highlighted as a downside. Tasks without content can be created, leading to error responses. Suggested improvements include frontend validation and error notifications.
-- **Design**: Praised for the app's design.
-- **User Feedback on Requests**: Lack of user feedback mechanisms (like overlays or spinners) during server communication was noted as a missing feature.
-- **Update Endpoint Parameters**: Criticism for the update endpoint's lack of specificity on what it updates.
-- **Responsiveness**: The app's responsiveness was commended.
-- **Extra Features**: Positive note on additional features like filtering tasks by status and the option to remove completed tasks.
-- **README**: Positive feedback for including a README.
+## Demo & Others:
 
-### Server-Side
+- **Deployment**: Positive feedback for successfully deploying the application.
+- **Commits**: Negative feedback due to the presence of 25 commits, most of which are titled "make it better," indicating a need for more descriptive commit messages.
+- **Empty Task Creation**: Negative feedback for allowing the creation of empty tasks, which also results in a 503 error. It's suggested that frontend validation should prevent the creation of empty tasks and display an error notification or message if attempted.
+- **Design**: Positive feedback for the application's design.
+- **Request Feedback**: Negative for the absence of user feedback mechanisms like overlays, spinners, or notification messages when communicating with the server.
+- **Update Endpoint Parameters**: Negative feedback for the PUT endpoint performing a status update without requiring additional parameters, suggesting that what is being updated should be explicitly stated.
+- **Responsiveness**: Positive feedback for the application's responsiveness.
+- **Extra Feature**: Positive feedback for additional features, such as filter tabs based on status and the ability to remove completed tasks.
+- **README**: Positive feedback for including a README file.
 
-- **Code Styling & Variable Naming**: Neutral observation on code styling and naming conventions.
-- **Layering**: Negative feedback on the lack of separation between routes, controllers, services, and data access layers, suggesting a more structured approach.
-- **Update Method**: Questioned the necessity of saving after an update operation.
-- **Remove Method**: Criticism for hard deleting tasks rather than marking them as deleted, although it was noted this might not be critical for this project.
-- **Parameter Validation**: Lack of parameter validation was pointed out, though encapsulation for updates was seen as a positive step.
-- **Model**: Positive for including creation timestamps, though it's noted this isn't utilized on the frontend.
-- **Configuration & Constants**: Commended for proper use.
+## Server:
 
-### Client-Side
+- **Code Styling**: Neutral feedback regarding code styling.
+- **Variable Naming**: Neutral feedback on variable naming conventions.
+- **Layering**: Negative feedback for lack of proper layering, with routes in index.js accessing data directly. Ideally, routes should be separated, funnel through controllers, which then interact with services, and finally, data access. Operations between routes and data access should occur in distinct layers.
+- **Update Method**: Neutral feedback questioning the necessity of performing a save operation after an update.
+- **Remove Method**: Negative feedback for implementing a hard delete. The model could include an isDeleted flag, though for this project, retaining deleted records may not be necessary, but generally, records are not deleted from the database.
+- **Parameter Validation**: Neutral feedback on the absence of parameter validation, though an attempt to encapsulate updates by name is noted. Endpoints for creating and updating should include checks to prevent data corruption and server crashes, such as type checks and preventing unauthorized combinations.
+- **Model**: Positive feedback for including a creation timestamp in the model, though it's noted that this is not utilized on the frontend.
+- **Config & Constants**: Positive feedback for the configuration and constants.
 
-- **Redux**: Positive feedback on using Redux.
-- **Redux Usage**: Mixed feelings about the direct API calls within actions, suggesting separation and the potential use of Saga for an event-driven architecture.
-- **Component Decomposition**: Advised for more granular component breakdown to enhance modularity.
-- **UI Library**: Noted absence and emphasized the importance of using UI libraries for UX-focused positions rather than inline styling.
-- **Hooks**: Negative for not utilizing React hooks.
-- **Action States (Pending, Success, Fail)**: Pointed out as missing, which is important for user feedback.
-- **View Styling**: Neutral on styling approaches, expressing a preference for UI library styles over inline.
-- **Code Styling**: Suggested improvements in rendering methods for readability and modularization.
-- **Config & Constants**: Mixed feedback on the use of setup proxy and constants within actions.
+## Client:
 
-### Extras
+- **Redux**: Positive feedback for using Redux.
+- **Redux Usage**: Neutral feedback on how actions (thunk) make API requests directly, suggesting that these requests could be abstracted into a separate layer, like an API, and potentially using Saga for a more event-driven architecture.
+- **Component Decomposition**: Negative feedback for the level of component decomposition, indicating that both the individual components and the overall app could be further broken down for better modularity.
+- **UI Library**: Negative feedback for the absence of a UI library, highlighting that for the position sought, UX is more critical than UI, thus using pre-made UI libraries is preferred over inline styling.
+- **Hooks**: Negative feedback for not utilizing React hooks.
+- **Pending, Success, Fail Actions**: Negative feedback for the absence of these actions, which are crucial for providing user feedback.
+- **View Styling**: Neutral feedback on styling, with a preference for using styling from UI library components, proceeding with classes if necessary, and resorting to theme-based styling as a last resort.
+- **Code Styling**: Neutral feedback suggesting that the render method could be further broken down into sections or functions for better readability, to avoid confronting a block of code upon entering a component.
+- **Config & Constants**: Neutral feedback, noting only the presence of a setupProxy and embedding a desired constant directly within actions.
 
-- **General Appearance**: Liked the overall look of the demo.
-- **Polling**: Critiqued the method of fetching todos every 10 seconds, suggesting sockets as an alternative.
+## Extras:
+
+- **General Appearance**: Positive feedback for the overall look of the demo.
+- **Polling**: Negative feedback for fetching todos every 10 seconds, suggesting that sockets could be used instead.
